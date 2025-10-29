@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Credora — freelancer-first invoicing, proposals, contracts, and payments. Get paid faster with Payoneer, Wise, Bank Transfer, and smart reminders." />
+  <title>Credora — Invoicing, Proposals, Contracts & Payments for Freelancers</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0A7CA5',
+            accent: '#17B067',
+            darkbg: '#0B1015',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ring: 0 0 0 3px rgba(10,124,165,.2) }
+    html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    .font-display { font-family: Poppins, Inter, ui-sans-serif, system-ui; }
+    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.7); }
+    .dark .glass { background: rgba(11,16,21,0.6); }
+  </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-darkbg dark:text-slate-100">
+  <!-- Top Bar -->
+  <header class="relative">
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <div class="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full bg-primary/20 blur-3xl"></div>
+      <div class="pointer-events-none absolute top-40 -left-32 h-96 w-96 rounded-full bg-accent/20 blur-3xl"></div>
+    </div>
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <a href="#" class="flex items-center gap-3">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="shrink-0">
+          <circle cx="12" cy="12" r="10" class="fill-primary/10"></circle>
+          <path d="M6 12h12M9 8l6 8" stroke="#0A7CA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-display text-xl font-semibold tracking-tight">Credora</span>
+      </a>
+      $1
+        <a href="#compare" class="hover:text-primary">Compare</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="rounded-xl border border-slate-200 px-3 py-2 text-sm hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800" aria-label="Toggle theme">Theme</button>
+        <a href="#waitlist" class="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-90">Join Waitlist</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-10 md:grid-cols-2 md:pt-16 lg:gap-16">
+      <div>
+        <h1 class="font-display text-4xl font-semibold leading-tight md:text-5xl">Get Paid Faster. <span class="text-primary">Stress Less.</span></h1>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Smart invoicing, proposals, contracts, and payment tracking built for freelancers and small agencies in Pakistan and beyond.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#waitlist" class="rounded-2xl bg-accent px-5 py-3 font-semibold text-white shadow-soft hover:opacity-90">Join the Waitlist</a>
+          <a href="#how" class="rounded-2xl border border-slate-300 px-5 py-3 font-semibold hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">See How It Works</a>
+        </div>
+        <div class="mt-6 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+          <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-accent"></span> Payoneer & Wise ready</div>
+          <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-primary"></span> Urdu + English UI</div>
+        </div>
+      </div>
+      <!-- Dashboard mock -->
+      <div class="relative">
+        <div class="glass ring-1 ring-slate-200 dark:ring-slate-700 rounded-2xl p-4 shadow-soft">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-3 dark:border-slate-700">
+            <div class="font-semibold">Dashboard</div>
+            <div class="text-xs text-slate-500">Sample preview</div>
+          </div>
+          <div class="grid grid-cols-3 gap-4 pt-4">
+            <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+              <div class="text-xs text-slate-500">Total Invoiced</div>
+              <div class="mt-1 text-2xl font-semibold">PKR 1.8M</div>
+            </div>
+            <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+              <div class="text-xs text-slate-500">Received</div>
+              <div class="mt-1 text-2xl font-semibold text-accent">PKR 1.3M</div>
+            </div>
+            <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+              <div class="text-xs text-slate-500">Overdue</div>
+              <div class="mt-1 text-2xl font-semibold text-red-500">PKR 240k</div>
+            </div>
+          </div>
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
+            <div class="mb-2 flex items-center justify-between">
+              <div class="text-sm font-semibold">Recent Invoices</div>
+              <a class="text-sm text-primary" href="#">View all</a>
+            </div>
+            <ul class="divide-y divide-slate-200 text-sm dark:divide-slate-700">
+              <li class="flex items-center justify-between py-2"><span>#INV-1045 · Alpha LLC</span><span class="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">Paid</span></li>
+              <li class="flex items-center justify-between py-2"><span>#INV-1046 · Beta Studio</span><span class="rounded-full bg-yellow-100 px-2 py-0.5 text-xs font-medium text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300">Due in 3d</span></li>
+              <li class="flex items-center justify-between py-2"><span>#INV-1047 · Delta Co.</span><span class="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700 dark:bg-red-900/30 dark:text-red-300">Overdue</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="absolute -right-6 -top-6 hidden rounded-xl bg-white px-3 py-2 text-sm shadow-soft ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700 md:block">
+          <span class="font-semibold text-accent">Payment received</span>
+          <div class="text-xs text-slate-500">Wise · USD 420</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section id="problem" class="relative border-y border-slate-100 py-16 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+          <h2 class="font-display text-3xl font-semibold">Freelancers lose <span class="text-primary">up to 20%</span> of income to disorganization.</h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">Multiple tools, manual invoices, and chasing payments create leaks. Credora centralizes invoicing, proposals, contracts, and payment tracking so you keep more.</p>
+          <ul class="mt-6 space-y-2 text-slate-700 dark:text-slate-300">
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> 70% of freelancers use manual invoicing workflows.</li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> 40% face delayed or missing payments.</li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> Local payment rails are under-served by global tools.</li>
+          </ul>
+          <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">Figures represent aggregated public indices and community reports for directional context.</p>
+        </div>
+        <blockquote class="rounded-2xl bg-slate-50 p-6 text-slate-700 shadow-soft dark:bg-slate-800 dark:text-slate-200">
+          “I track time in one app, invoice in another, and confirm Payoneer on email. It’s chaos.”
+          <footer class="mt-3 text-sm text-slate-500">— Community quote, r/freelance</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution / Features -->
+  <section id="features" class="relative py-16">
+    <div class="absolute inset-x-0 -top-24 -z-10 h-48 bg-gradient-to-b from-primary/10 to-transparent"></div>
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl font-semibold">One platform. Total control.</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Invoicing, multi-channel payments, proposals, contracts, reminders, and reports. Built for freelancers and small agencies.</p>
+      </div>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Card -->
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-800">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 10h16M4 14h10M4 18h6"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Invoicing Simplified</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Branded PDFs, auto-numbering, due dates, and shareable links in seconds.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-800">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M3 6h18M3 12h18M3 18h18"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Multi-Channel Payments</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Payoneer, Wise, Bank Transfer at launch. USDT in Pro.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-800">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h8M8 12h8M8 17h8M4 7h.01M4 12h.01M4 17h.01"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Proposals & Contracts</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Templates for scope, pricing, and terms. Accept digitally. Convert to invoice in one click.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-800">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Zm9-5v10M7 12h10"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Automated Reminders</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Pre-due and overdue nudges via email. WhatsApp templates supported.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-800">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v14H3z"/><path d="M3 21h18"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Smart Dashboard</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Income, overdue, and client trends at a glance.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-800">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Reports & Exports</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Monthly and client-wise reports. CSV and PDF export.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Designed for freelancers -->
+  <section class="relative border-y border-slate-100 py-16 dark:border-slate-800">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-2">
+      <div>
+        <h2 class="font-display text-3xl font-semibold">Designed for Freelancers</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Solo consultants. Designers. Developers. Small agencies. Local currency support and a clear, fast workflow mean less admin and more billable hours.</p>
+        <ul class="mt-6 grid gap-2 text-slate-700 dark:text-slate-300">
+          <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-accent"></span> PKR, USD, AED currencies</li>
+          <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-accent"></span> Urdu + English UI</li>
+          <li class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-accent"></span> Web and mobile friendly</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-gradient-to-br from-slate-50 to-white p-6 shadow-soft ring-1 ring-slate-200 dark:from-slate-900 dark:to-slate-800 dark:ring-slate-700">
+        <img alt="Freelancer workspace" class="rounded-xl object-cover" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof & Market Validation -->
+  <section id="proof" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl font-semibold">The market is asking for this.</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Large communities report payment tracking and invoicing chaos. Credora focuses on local rails and freelancer-first workflows.</p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 p-6 text-center shadow-soft dark:border-slate-800">
+          <div class="text-4xl font-bold text-primary">1.5M+</div>
+          <div class="mt-1 text-sm text-slate-500">Freelancers in Pakistan</div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 text-center shadow-soft dark:border-slate-800">
+          <div class="text-4xl font-bold text-primary">60%</div>
+          <div class="mt-1 text-sm text-slate-500">Say payment tracking is the top struggle</div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 text-center shadow-soft dark:border-slate-800">
+          <div class="text-4xl font-bold text-primary">High</div>
+          <div class="mt-1 text-sm text-slate-500">Engagement on invoicing pain threads</div>
+        </div>
+      </div>
+      <p class="mx-auto mt-4 max-w-3xl text-center text-xs text-slate-500">Directional figures from public indexes and community discussions. Replace with your survey stats after launch.</p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="relative border-y border-slate-100 py-16 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl font-semibold">How it works</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Three steps to cleaner cashflow.</p>
+      </div>
+      <ol class="mx-auto mt-8 grid max-w-4xl gap-6 md:grid-cols-3">
+        <li class="rounded-2xl border border-slate-200 p-6 shadow-soft dark:border-slate-800">
+          <div class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">1</div>
+          <h3 class="font-semibold">Create</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Send a proposal or invoice with branded PDF and clear payment options.</p>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-6 shadow-soft dark:border-slate-800">
+          <div class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">2</div>
+          <h3 class="font-semibold">Share</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Client accepts digitally. Reminders are scheduled automatically.</p>
+        </li>
+        <li class="rounded-2xl border border-slate-200 p-6 shadow-soft dark:border-slate-800">
+          <div class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">3</div>
+          <h3 class="font-semibold">Get Paid</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Track Payoneer, Wise, and bank transfers in one place.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <!-- Competitor Comparison -->
+  <section id="compare" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl font-semibold">How Credora compares</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Focused on freelancers in Pakistan and the GCC with local rails and simple workflows.</p>
+      </div>
+
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full min-w-[880px] border-separate border-spacing-0 text-sm">
+          <thead>
+            <tr>
+              <th class="sticky left-0 z-10 bg-white/80 px-4 py-3 text-left font-semibold backdrop-blur dark:bg-slate-900/80">Feature</th>
+              <th class="px-4 py-3 text-left font-semibold">Credora</th>
+              <th class="px-4 py-3 text-left font-semibold">Global Invoicers*</th>
+              <th class="px-4 py-3 text-left font-semibold">Generic CRMs</th>
+              <th class="px-4 py-3 text-left font-semibold">Spreadsheets</th>
+            </tr>
+          </thead>
+          <tbody class="align-top">
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">Local payment rails (Payoneer, Wise, Bank)</td>
+              <td class="px-4 py-3"><span class="rounded-full bg-green-100 px-2 py-0.5 text-green-700 dark:bg-green-900/30 dark:text-green-300">Built-in</span></td>
+              <td class="px-4 py-3">Partial / Add-ons</td>
+              <td class="px-4 py-3">Not native</td>
+              <td class="px-4 py-3">Manual</td>
+            </tr>
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">PKR/USD/AED first</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="px-4 py-3">USD-first</td>
+              <td class="px-4 py-3">Varies</td>
+              <td class="px-4 py-3">Manual</td>
+            </tr>
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">Proposals → Contracts → Invoice flow</td>
+              <td class="px-4 py-3">One-click</td>
+              <td class="px-4 py-3">Multiple tools</td>
+              <td class="px-4 py-3">Complex</td>
+              <td class="px-4 py-3">Manual</td>
+            </tr>
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">WhatsApp-ready reminders</td>
+              <td class="px-4 py-3">Templates</td>
+              <td class="px-4 py-3">Email-only</td>
+              <td class="px-4 py-3">Requires setup</td>
+              <td class="px-4 py-3">None</td>
+            </tr>
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">Urdu + English UI</td>
+              <td class="px-4 py-3">Yes</td>
+              <td class="px-4 py-3">Limited</td>
+              <td class="px-4 py-3">Varies</td>
+              <td class="px-4 py-3">N/A</td>
+            </tr>
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">Freelancer-focused onboarding</td>
+              <td class="px-4 py-3">Minutes</td>
+              <td class="px-4 py-3">Long</td>
+              <td class="px-4 py-3">Complex</td>
+              <td class="px-4 py-3">DIY</td>
+            </tr>
+            <tr class="border-t border-slate-200 dark:border-slate-800">
+              <td class="sticky left-0 bg-white/80 px-4 py-3 font-medium backdrop-blur dark:bg-slate-900/80">Cost for MVP needs</td>
+              <td class="px-4 py-3">Free tier</td>
+              <td class="px-4 py-3">$10–$30/mo</td>
+              <td class="px-4 py-3">$20–$50/mo</td>
+              <td class="px-4 py-3">Time cost</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs text-slate-500">*“Global Invoicers” groups mainstream tools (e.g., Wave, Zoho Invoice, FreshBooks). Labels are illustrative. Verify specifics at purchase time.</p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="relative py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-display text-3xl font-semibold">Simple pricing that grows with you</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Start free. Upgrade when you need more.
+        </p>
+      </div>
+      <div class="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft dark:border-slate-800">
+          <h3 class="font-display text-xl font-semibold">Free</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">For getting started</p>
+          <div class="mt-4 text-3xl font-bold">PKR 0</div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>Up to 5 invoices / month</li>
+            <li>Basic analytics</li>
+            <li>Email reminders</li>
+            <li>Proposals & Contracts (basic templates)</li>
+          </ul>
+          <a href="#waitlist" class="mt-6 inline-block w-full rounded-xl border border-slate-300 px-4 py-2 text-center font-semibold hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">Join Waitlist</a>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 shadow-soft ring-2 ring-accent dark:border-slate-800">
+          <div class="mb-2 inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">Most Popular</div>
+          <h3 class="font-display text-xl font-semibold">Pro</h3>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">For growing freelancers and agencies</p>
+          <div class="mt-4 text-3xl font-bold">TBA</div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>Unlimited invoices</li>
+            <li>Advanced analytics</li>
+            <li>USDT support</li>
+            <li>Branded invoice domain</li>
+            <li>WhatsApp templates</li>
+          </ul>
+          <a href="#waitlist" class="mt-6 inline-block w-full rounded-xl bg-accent px-4 py-2 text-center font-semibold text-white shadow-soft hover:opacity-90">Reserve Pro Access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section class="relative border-y border-slate-100 py-16 dark:border-slate-800">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-2">
+      <div>
+        <h2 class="font-display text-3xl font-semibold">Your money. Your data. Protected.</h2>
+        <ul class="mt-4 space-y-2 text-slate-700 dark:text-slate-300">
+          <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> Bank‑grade encryption (AES‑256)</li>
+          <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> Secure cloud hosting in UAE</li>
+          <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> 2‑step verification</li>
+          <li class="flex gap-3"><span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary"></span> Privacy-first by design</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-gradient-to-br from-slate-50 to-white p-6 text-center shadow-soft ring-1 ring-slate-200 dark:from-slate-900 dark:to-slate-800 dark:ring-slate-700">
+        <svg viewBox="0 0 24 24" class="mx-auto h-24 w-24 text-primary" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/></svg>
+        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">We use modern security practices. Replace this block with your audited details at launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="relative py-16">
+    <div class="mx-auto max-w-5xl px-6">
+      <h2 class="text-center font-display text-3xl font-semibold">FAQ</h2>
+      <div class="mt-8 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white dark:divide-slate-700 dark:border-slate-800 dark:bg-slate-900">
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">Is Credora free to start?
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Yes. The Free plan includes up to 5 invoices per month and basic analytics.</p>
+        </details>
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">Which payment methods are supported?
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Payoneer, Wise, and Bank Transfer at launch. USDT in Pro.</p>
+        </details>
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">Do proposals and contracts support e‑signatures?
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Yes. Clients can accept digitally and you can convert accepted proposals directly to invoices.</p>
+        </details>
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-semibold">Is Credora available outside Pakistan?
+            <span class="transition group-open:rotate-180">⌄</span>
+          </summary>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Yes. It works globally, with initial currency focus on PKR, USD, and AED.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Waitlist -->
+  <section id="waitlist" class="relative border-t border-slate-100 py-16 dark:border-slate-800">
+    <div class="absolute inset-x-0 -top-24 -z-10 h-48 bg-gradient-to-b from-accent/10 to-transparent"></div>
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="grid items-center gap-8 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 p-8 shadow-soft ring-1 ring-slate-200 dark:ring-slate-700 md:grid-cols-2">
+        <div>
+          <h2 class="font-display text-3xl font-semibold">Turn chaos into cashflow.</h2>
+          <p class="mt-2 text-slate-700 dark:text-slate-300">Join early users building a simpler future for freelance payments.</p>
+          <ul class="mt-4 grid gap-2 text-sm text-slate-700 dark:text-slate-300">
+            <li class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-accent"></span> Early access perks</li>
+            <li class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-accent"></span> Priority feature input</li>
+            <li class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-accent"></span> Limited founding-member pricing</li>
+          </ul>
+        </div>
+        <form class="glass rounded-2xl p-6 shadow-soft ring-1 ring-slate-200 dark:ring-slate-700">
+          <label class="block text-sm font-medium">Name</label>
+          <input type="text" required placeholder="Aisha Khan" class="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 outline-none ring-0 focus:border-primary focus:[box-shadow:var(--ring)] dark:border-slate-700 dark:bg-slate-900" />
+          <label class="mt-4 block text-sm font-medium">Email</label>
+          <input type="email" required placeholder="aisha@email.com" class="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 outline-none ring-0 focus:border-primary focus:[box-shadow:var(--ring)] dark:border-slate-700 dark:bg-slate-900" />
+          <label class="mt-4 block text-sm font-medium">You are a…</label>
+          <select class="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 outline-none ring-0 focus:border-primary focus:[box-shadow:var(--ring)] dark:border-slate-700 dark:bg-slate-900">
+            <option>Freelancer</option>
+            <option>Small Agency</option>
+            <option>Startup</option>
+          </select>
+          <button type="submit" class="mt-6 w-full rounded-xl bg-accent px-4 py-2 font-semibold text-white shadow-soft hover:opacity-90">Join the Waitlist</button>
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">By joining you agree to receive product updates. You can unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-sm">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
+      <div class="flex items-center gap-3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" class="fill-primary/10"></circle>
+          <path d="M6 12h12M9 8l6 8" stroke="#0A7CA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-semibold">Credora</span>
+      </div>
+      <div class="text-slate-500 dark:text-slate-400">© <span id="year"></span> Credora. All rights reserved.</div>
+      <div class="flex items-center gap-4 text-slate-600 dark:text-slate-300">
+        <a href="#" class="hover:text-primary">Privacy</a>
+        <a href="#" class="hover:text-primary">Terms</a>
+        <a href="#" class="hover:text-primary">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Theme toggle
+    const btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('credora-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+    // Persist theme
+    const saved = localStorage.getItem('credora-theme');
+    if (saved === 'dark') document.documentElement.classList.add('dark');
+  </script>
+</body>
+</html>
