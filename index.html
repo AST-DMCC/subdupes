@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SubDupes - Find & Cancel Subscriptions</title>
+    <title>SubDupes - Find & Auto-Cancel Subscriptions</title>
     <style>
-        /* --- NEW: Color Palette & Fonts --- */
+        /* --- Color Palette & Fonts --- */
         :root {
             --brand-primary: #5E50F2;
             --brand-dark: #4338CA;
@@ -69,7 +69,6 @@
             font-size: 3.25rem; /* 52px */
             letter-spacing: -1.5px;
             font-weight: 800;
-            /* NEW: Gradient text */
             background: linear-gradient(90deg, var(--text-dark) 30%, #4b5563 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -141,7 +140,6 @@
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-light);
-            /* NEW: Gradient button */
             background-image: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-dark) 100%);
             border: none;
             border-radius: 10px;
@@ -157,13 +155,12 @@
             box-shadow: 0 6px 20px -5px var(--brand-primary);
         }
         
-        /* --- NEW: Header / Glass Navigation --- */
+        /* --- Header / Glass Navigation --- */
         .header {
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            /* NEW: Glass effect */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             background-color: rgba(255, 255, 255, 0.85);
@@ -218,17 +215,15 @@
         .nav-toggle-icon { width: 30px; height: 24px; display: flex; flex-direction: column; justify-content: space-between; }
         .nav-toggle-icon span { display: block; width: 100%; height: 3px; background-color: var(--text-dark); border-radius: 3px; transition: all 0.3s; }
         
-        /* --- NEW: Hero with Backdrop --- */
+        /* --- Hero with Backdrop --- */
         .hero {
             padding-top: 80px;
             padding-bottom: 80px;
-            /* NEW: Backdrop */
             background-image: linear-gradient(140deg, var(--bg-hero-start) 0%, var(--bg-hero-end) 60%);
             position: relative;
             overflow: hidden;
         }
         
-        /* NEW: CSS Blob Shapes */
         .hero::before {
             content: '';
             position: absolute;
@@ -318,11 +313,15 @@
             font-weight: 500;
         }
 
-        /* --- NEW: "Why Us?" (Asymmetrical Layout) --- */
-        .why-us-section {
+        /* --- Solution / "How it Works" --- */
+        .how-it-works-section {
             padding-bottom: 100px;
         }
         
+        .how-it-works-section .container {
+            padding-bottom: 0;
+        }
+
         .feature-spotlight {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -362,7 +361,7 @@
             color: var(--brand-secondary);
             font-size: 1.2rem;
         }
-
+        
         /* The App Mockup for the spotlight */
         .app-mockup {
             background: #fff;
@@ -370,13 +369,17 @@
             border-radius: 12px;
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
             overflow: hidden;
-            height: 100%; /* NEW */
+            height: 100%;
+            position: relative;
         }
         
         .mockup-header {
             padding: 12px;
             background: var(--bg-light-gray);
             border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
         .mockup-header span {
@@ -385,7 +388,6 @@
             height: 12px;
             border-radius: 50%;
             background: #ddd;
-            margin-right: 6px;
         }
         .mockup-header span:nth-child(1) { background: #fecaca; }
         .mockup-header span:nth-child(2) { background: #fef08a; }
@@ -393,56 +395,105 @@
 
         .mockup-body {
             padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
         }
         
-        .mockup-chart-container {
+        /* NEW MOCKUP for Co-Pilot */
+        .mockup-browser-window {
+            background: #fff;
+            padding: 16px;
+        }
+        .mockup-url-bar {
+            background: var(--bg-light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .mockup-page-content {
+            background: #fdfdfd;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            font-size: 0.9rem;
+        }
+        .mockup-page-content h4 {
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        .mockup-page-content button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .mockup-page-content button.primary {
+            background: var(--danger-red);
+            color: #fff;
+            border: none;
+        }
+        
+        .mockup-copilot {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            width: 250px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px -5px rgba(0,0,0,0.2);
+            padding: 16px;
+            z-index: 10;
+        }
+        
+        .mockup-copilot-header {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 24px;
+            gap: 8px;
+            margin-bottom: 12px;
         }
-        
-        .donut-chart {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: conic-gradient(
-                var(--brand-primary) 0% 35%,
-                var(--brand-yellow) 35% 55%,
-                var(--brand-secondary) 55% 70%,
-                #F87171 70% 85%,
-                #A78BFA 85% 100%
-            );
-            position: relative;
+        .mockup-copilot-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: var(--brand-primary);
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
-        .donut-chart::before { content: ""; position: absolute; width: 60%; height: 60%; background: var(--bg-white); border-radius: 50%; }
-        
-        .donut-chart-center {
-            position: absolute; text-align: center; color: var(--text-dark); z-index: 1;
+        .mockup-copilot-icon svg { width: 18px; height: 18px; }
+        .mockup-copilot-header h5 {
+            font-size: 1rem;
+            color: var(--text-dark);
         }
         
-        .donut-chart-center span { display: block; font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
-        .donut-chart-center small { font-size: 0.9rem; color: var(--text-medium); }
-        
-        .mockup-legend { list-style: none; width: 100%; }
-        
-        .mockup-legend li {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 0; font-size: 0.9rem; border-bottom: 1px solid var(--border-color);
+        .mockup-copilot p {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
         }
-        .mockup-legend li:last-child { border-bottom: none; }
+        .mockup-copilot-cta {
+            padding: 8px 12px;
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            background: var(--brand-secondary);
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .mockup-copilot-cta:hover { background: var(--brand-secondary-dark); }
         
-        .legend-label { display: flex; align-items: center; gap: 8px; }
-        .legend-color { width: 12px; height: 12px; border-radius: 3px; }
-        .legend-value { font-weight: 600; color: var(--text-dark); }
-        
+
         /* Other features */
         .features-grid {
             display: grid;
@@ -468,7 +519,7 @@
             width: 48px;
             height: 48px;
             border-radius: 10px;
-            background-color: var(--brand-light);
+            background-color: #F5F7FF; /* Lighter brand-light */
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -478,46 +529,6 @@
         
         .feature-card-icon svg { width: 24px; height: 24px; stroke-width: 2; }
 
-
-        /* --- "How it Works" (4-Step) Section --- */
-        .how-it-works-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .step-card {
-            background: #fff;
-            padding: 24px;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            transition: all 0.2s ease-in-out;
-            position: relative;
-            padding-top: 40px;
-        }
-        
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            font-weight: 600;
-            color: var(--brand-primary);
-            background-color: var(--brand-light);
-            border-radius: 50%;
-            margin-bottom: 16px;
-            position: absolute;
-            top: -20px;
-            left: 24px;
-            border: 4px solid var(--bg-light-gray);
-        }
 
         /* --- "ROI" (Financial Impact) Section --- */
         .roi-grid {
@@ -581,10 +592,7 @@
             color: var(--success-green);
         }
         
-        /* ========================================
-        === NEW: Comparison Section
-        ========================================
-        */
+        /* --- Comparison Section --- */
         .comparison-section {
             background-color: var(--bg-white);
         }
@@ -738,19 +746,7 @@
                 grid-template-columns: 1fr;
             }
         }
-        
-        @media (min-width: 768px) {
-            .how-it-works-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .how-it-works-grid {
-                grid-template-columns: 1fr 1fr 1fr 1fr;
-            }
-        }
-        
+
         @media (max-width: 899px) {
             .nav-toggle {
                 display: block;
@@ -799,11 +795,12 @@
             
             <nav class="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="#why-us">Why Us?</a></li>
+                    <li><a href="#features">Features</a></li>
                     <li><a href="#how-it-works">How it Works</a></li>
                     <li><a href="#roi">ROI</a></li>
-                    <li><a href="#security">Security</a></li>
-                    <li><a href="#compare">Compare</a></li> <li><a href="#waitlist-form-final" class="cta-button">Join Waitlist</a></li>
+                    <li><a href="#security">Privacy</a></li>
+                    <li><a href="#compare">Compare</a></li>
+                    <li><a href="#waitlist-form-final" class="cta-button">Join Waitlist</a></li>
                 </ul>
             </nav>
             
@@ -823,7 +820,8 @@
                 <h1>Find & Cancel Forgotten Subscriptions.</h1>
                 <h1>Without Giving Up Your Bank Password.</h1>
                 <p class="sub-headline">
-                    SubDupes is the first subscription manager that works <em>without</em> connecting to your bank. Our smart email scanner and browser extension find every recurring charge, alert you before free trials end, and even <strong>cancel them for you.</strong>
+                    SubDupes is the <strong>only</strong> subscription manager that's 100% private. Our smart browser extension and dashboard give you the power to find, track, and—for the first time ever—<strong>automatically cancel</strong> unwanted subscriptions.
+                    <br><br>No bank passwords. No email scanning. Just pure control.
                 </p>
                 <form class="waitlist-form" onsubmit="alert('Thanks for joining the waitlist!'); return false;">
                     <input type="email" class="waitlist-input" placeholder="Enter your email" required>
@@ -834,9 +832,10 @@
 
         <section class="problem-section" id="problem">
             <div class="container" style="padding-bottom: 40px;">
+                <h2 class="section-subtitle">THE LEAKY BUCKET</h2>
                 <h2 class="text-center">That $9 "Free Trial" You Forgot?<br> It Just Cost You $108.</h2>
                 <p class="text-center" style="max-width: 800px; margin: 0 auto; font-size: 1.15rem;">
-                    We've all been there. The free trial that converts to a $99 plan, the price hike you missed, the duplicate subscription, and the 20-minute hunt for the hidden "cancel" button.
+                    We've all been there. The "zombie" subscription you pay for but haven't used in months. The surprise price hike you missed. The duplicate account you're paying for twice. And the 20-minute, 10-click hunt for the hidden "cancel" button.
                 </p>
             </div>
         </section>
@@ -845,9 +844,6 @@
             <div class="container">
                 <h2 class="section-subtitle">The Demand is Real</h2>
                 <h2 class="text-center">You're Not Alone. This is a Widespread Problem.</h2>
-                <p class="text-center" style="max-width: 800px; margin: -16px auto 0 auto;">
-                    We didn't just guess this was a problem. We scanned thousands of public conversations on platforms like Reddit and Twitter. The data is clear:
-                </p>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
@@ -860,7 +856,7 @@
                         <div class="stat-icon icon-yellow">🔥</div>
                         <div class="stat-number">1.6M+</div>
                         <div class="stat-label">Total Engagements</div>
-                        <p style="font-size: 1rem; margin-top: 8px;">Likes, shares, and frustrated comments on those posts from people desperate for a simple solution.</p>
+                        <p style="font-size: 1rem; margin-top: 8px;">Frustrated likes, shares, and comments on those posts from people desperate for a solution.</p>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon icon-secondary">📈</div>
@@ -871,120 +867,88 @@
                 </div>
             </div>
         </section>
-
-        <section class="why-us-section" id="why-us">
+        
+        <section class="how-it-works-section" id="how-it-works">
             <div class="container">
-                <h2 class="section-subtitle">Why Choose Us?</h2>
-                <h2 class="text-center">Why SubDupes is Your Best Option</h2>
+                <h2 class="section-subtitle">THE SOLUTION</h2>
+                <h2 class="text-center">Meet SubDupes: The Co-Pilot for Your Subscriptions.</h2>
                 <p class="text-center" style="max-width: 800px; margin: -16px auto 0 auto;">
-                    We're not just another tracker. We're an active, privacy-first service designed to save you real money and time.
+                    Forget "all-or-nothing" finance apps that demand your most sensitive data. SubDupes is a powerful, privacy-first toolkit that works <em>for</em> you, right in your browser. It's composed of two parts: a central <strong>Dashboard</strong> to see your spending and a smart <strong>Browser Extension</strong> to automate the work.
+                    <br><br>
+                    We don't need access to your bank. We give you the tools to take control.
                 </p>
+            </div>
+        </section>
+
+        <section class="why-us-section" id="features" style="padding-top: 0; background-color: var(--bg-light-gray);">
+            <div class="container">
+                <h2 class="section-subtitle">CORE FEATURES</h2>
+                <h2 class="text-center">A Complete Toolkit</h2>
 
                 <div class="feature-spotlight">
                     <div class="feature-spotlight-content">
-                        <h2 class="section-subtitle" style="text-align: left; margin-left: 0;">The "Cancel For Me" Button</h2>
-                        <h3>Tired of the Run-Around? We'll Cancel For You.</h3>
-                        <p class="lead">Stop wasting time hunting for hidden "cancel" buttons or waiting on hold. Our most powerful feature, **Concierge Cancellation**, is your personal assistant for ditching unwanted subs.</p>
+                        <h2 class="section-subtitle" style="text-align: left; margin-left: 0;">FEATURE 1</h2>
+                        <h3>The "Cancel" Button You've Always Wanted</h3>
+                        <p class="lead">Introducing the <strong>Cancellation Co-Pilot</strong>. Tired of navigating 10-page "dark pattern" mazes just to cancel? So are we.</p>
                         <ul>
-                            <li>Can't find the cancel button? We'll find it.</li>
-                            <li>Service forces you to call? We'll make the call.</li>
-                            <li>Trying to trick you with a "retention flow"? We'll handle it.</li>
+                            <li>Click "Cancel" on your SubDupes dashboard.</li>
+                            <li>We'll open the service's login page. You log in *yourself* (so it's 100% secure).</li>
+                            <li>Once in, activate the SubDupes Co-Pilot.</li>
+                            <li><strong>Watch as our extension takes over</strong>, automatically clicking "Manage Plan," "Cancel," "Skip Offer," and "Confirm Cancellation" <em>for you</em>.</li>
                         </ul>
-                        <p style="margin-top: 24px; font-weight: 600;">Just hit the button, and a real human from our team will handle the entire process for you.</p>
+                        <p style="margin-top: 24px; font-weight: 600;">A 20-minute hassle, done in 15 seconds.</p>
                     </div>
                     <div class="app-mockup">
                         <div class="mockup-header">
                             <span></span><span></span><span></span>
                         </div>
                         <div class="mockup-body">
-                            <div class="mockup-chart-container">
-                                <div class="donut-chart">
-                                    <div class="donut-chart-center">
-                                        <span>$142</span>
-                                        <small>/mo</small>
-                                    </div>
+                            <div class="mockup-browser-window">
+                                <div class="mockup-url-bar">https://account.adobe.com/plans</div>
+                                <div class="mockup-page-content">
+                                    <h4>Manage Your Plan</h4>
+                                    <p style="font-size: 0.9rem;">Your Creative Cloud All Apps plan renews on Nov 28, 2025.</p>
+                                    <button>Change Plan</button>
+                                    <button class="primary" style="opacity: 0.7;">Cancel Plan</button>
                                 </div>
                             </div>
-                            <ul class="mockup-legend">
-                                <li>
-                                    <span class="legend-label"><span class="legend-color" style="background: #5E50F2;"></span>Entertainment</span>
-                                    <span class="legend-value">$49.99</span>
-                                </li>
-                                <li>
-                                    <span class="legend-label"><span class="legend-color" style="background: #FCD34D;"></span>Software</span>
-                                    <span class="legend-value">$29.00</span>
-                                </li>
-                                <li>
-                                    <span class="legend-label"><span class="legend-color" style="background: #0ED7A8;"></span>Fitness</span>
-                                    <span class="legend-value">$21.00</span>
-                                </li>
-                                <li>
-                                    <span class="legend-label"><span class="legend-color" style="background: #F87171;"></span>Utilities</span>
-                                    <span class="legend-value">$19.99</span>
-                                </li>
-                                <li>
-                                    <span class="legend-label"><span class="legend-color" style="background: #A78BFA;"></span>Other</span>
-                                    <span class="legend-value">$22.02</span>
-                                </li>
-                            </ul>
+                        </div>
+                        <div class="mockup-copilot">
+                            <div class="mockup-copilot-header">
+                                <span class="mockup-copilot-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.314.062a4.5 4.5 0 01-2.576 2.576c-.021.107-.041.21-.062.314m2.638-2.638l-.029-.029-.029-.029m-2.638 2.638l.029.029.029.029" />
+                                    </svg>
+                                </span>
+                                <h5>SubDupes Co-Pilot</h5>
+                            </div>
+                            <p>I see you're on Adobe's account page. Ready to cancel?</p>
+                            <button class="mockup-copilot-cta">Start Cancellation</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
+                        <div class="feature-card-icon" style="color: var(--brand-secondary); background: #F0FDF4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" /></svg>
                         </div>
-                        <h3>Never Forget a Free Trial</h3>
-                        <p>Our most important alert. We send a high-priority notification 48 hours before a trial converts, giving you ample time to cancel without paying a cent.</p>
+                        <h3>Find "Zombie" Subscriptions</h3>
+                        <p>Our extension can (privately, on your device) monitor usage. We'll alert you: "You're paying $99/mo for 'Ahrefs', but haven't logged in for 60 days. Time to cancel?"</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card-icon" style="color: var(--brand-yellow); background: #FFFBEB;">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
                         </div>
-                        <h3>Find Duplicates & Hikes</h3>
-                        <p>Our system automatically flags "SubDupes"—duplicate subscriptions you're paying for twice. We also alert you if an email receipt shows a price hike.</p>
+                        <h3>Get a 360° View in 5 Mins</h3>
+                        <p>Have 20 existing subs? Our **CSV Importer** (with templates for Mint & Rocket Money) gets you set up in seconds. Our extension then catches all new subs as you sign up.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-card-icon" style="color: var(--brand-secondary); background: #F0FDF4;">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        <div class="feature-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" /></svg>
                         </div>
-                        <h3>Get a 360° Spending View</h3>
-                        <p>Your dashboard isn't just a list. We auto-categorize your spending and show you simple, visual reports of your total monthly and annual spend.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="solution-section" id="how-it-works">
-            <div class="container">
-                <h2 class="section-subtitle">How It Works</h2>
-                <h2 class="text-center">How SubDupes Works: Our 4-Step Process</h2>
-                <p class="text-center" style="max-width: 700px; margin: -16px auto 0 auto;">
-                    Get up and running in minutes. No bank credentials needed.
-                </p>
-
-                <div class="how-it-works-grid">
-                    <div class="step-card">
-                        <span class="step-number">1</span>
-                        <h3>Securely Scan Your Inbox</h3>
-                        <p>Connect Gmail or Outlook. SubDupes performs a one-time, read-only scan for receipts and invoices to automatically find subscriptions you're already paying for.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number" style="color: var(--brand-secondary); background: #F0FDF4;">2</span>
-                        <h3>Track as You Go</h3>
-                        <p>Our smart Chrome extension detects when you're on a signup page. With one click, you can add new trials (and their end dates) to your dashboard before you even subscribe.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number" style="color: var(--brand-yellow); background: #FFFBEB;">3</span>
-                        <h3>Monitor Your Dashboard</h3>
-                        <p>See all your recurring payments, free trials, and spending categories in one simple, clean dashboard. Know exactly what's coming up and where your money is going.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number" style="color: #F87171; background: #FEF2F2;">4</span>
-                        <h3>Cancel & Save</h3>
-                        <p>Receive alerts for upcoming trials or renewals. Use our "How-to-Cancel" library, or just click the "Concierge Cancel" button and let us handle the hard work for you.</p>
+                        <h3>Catch Price Hikes & Duplicates</h3>
+                        <p>Our Co-Pilot verifies your billing page for price hikes. And our app warns you *before* you add a duplicate. "You're adding 'Adobe Acrobat,' but you already have 'Adobe Creative Cloud'?"</p>
                     </div>
                 </div>
             </div>
@@ -1012,7 +976,7 @@
                     <div class="roi-card">
                         <div class="roi-number">2+ Hrs</div>
                         <div class="stat-label">Time Saved Per Month</div>
-                        <p style="font-size: 1rem; margin-top: 8px;">Stop hunting for cancel buttons and waiting on hold. Our Concierge Service gives you back your most valuable asset: your time.</p>
+                        <p style="font-size: 1rem; margin-top: 8px;">Stop hunting for cancel buttons. Our Cancellation Co-Pilot automates the entire process for you, giving you back your time.</p>
                     </div>
                 </div>
             </div>
@@ -1021,15 +985,15 @@
         <section class="trust-section" id="security">
             <div class="container">
                 <h2 class="section-subtitle">Data Privacy & Trust</h2>
-                <h2 class="text-center">Your Security Is Our Promise.</h2>
+                <h2 class="text-center">Your Security Is Our Promise. Period.</h2>
                 <p class="text-center" style="max-width: 800px; margin: -16px auto 0 auto;">
-                    We built SubDupes because we were tired of "all-or-nothing" finance apps. Our model is built on trust, not on access to your bank accounts.
+                    We built SubDupes because we were tired of "all-or-nothing" finance apps. Our business model is to earn your subscription, not to sell your data.
                 </p>
                 <ul class="trust-list">
-                    <li><strong>NO bank passwords or Plaid connections required.</strong> Our V1 works entirely off your email receipts and browser, which you control.</li>
-                    <li><strong>NO reading your personal, non-financial emails.</strong> Our scanner *only* looks for keywords like "receipt," "invoice," and "subscription." Your personal emails are never read.</li>
-                    <li><strong>NO selling your personal data to advertisers.</strong> Our business model is to earn your subscription, not to sell your data. Period.</li>
-                    <li><strong>Bank-Grade Encryption.</strong> All your connected data is encrypted at rest and in transit using industry-best standards.</li>
+                    <li><strong>NO bank passwords or Plaid connections.</strong> Ever.</li>
+                    <li><strong>NO email scanning.</strong> Your inbox is your private space.</li>
+                    <li><strong>NO cloud-based browsing history.</strong> Our "Zombie" finder works 100% on your local device.</li>
+                    <li><strong>NO selling your personal data to advertisers.</strong> Our business model is to earn your subscription, not to sell your data.</li>
                 </ul>
             </div>
         </section>
@@ -1047,7 +1011,7 @@
                         <thead>
                             <tr>
                                 <th>Feature</th>
-                                <th class="highlight-col">SubDupes (V1)</th>
+                                <th class="highlight-col">SubDupes (V2)</th>
                                 <th>Rocket Money / Trim</th>
                                 <th>Monarch Money</th>
                                 <th>Simple Trackers (e.g. Bobby)</th>
@@ -1062,15 +1026,15 @@
                                 <td><span class="check">✓</span><br><small>(But 100% manual entry)</small></td>
                             </tr>
                             <tr>
-                                <td><strong>Concierge Cancellation</strong></td>
+                                <td><strong>Automated Cancellation (Co-Pilot)</strong></td>
                                 <td class="highlight-col"><span class="check">✓</span></td>
-                                <td><span class="check">✓</span><br><small>(As a premium service)</small></td>
+                                <td><span class="partial">Partial</span><br><small>(Human-powered, slow)</small></td>
                                 <td><span class="cross">✗</span></td>
                                 <td><span class="cross">✗</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Smart Email Scan</strong></td>
-                                <td class="highlight-col"><span class="check">✓</span></td>
+                                <td class="highlight-col"><span class="cross">✗</span><br><small>(By Design for Privacy)</small></td>
                                 <td><span class="check">✓</span></td>
                                 <td><span class="cross">✗</span></td>
                                 <td><span class="cross">✗</span></td>
@@ -1083,17 +1047,17 @@
                                 <td><span class="cross">✗</span></td>
                             </tr>
                             <tr>
-                                Something <td><strong>Free Trial Alerts</strong></td>
+                                <td><strong>"Zombie" Sub Finder (Usage)</strong></td>
                                 <td class="highlight-col"><span class="check">✓</span></td>
-                                <td><span class="check">✓</span></td>
-                                <td><span class="partial">Partial</span></td>
-                                <td><span class="check">✓</span><br><small>(If added manually)</small></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
+                                <td><span class="cross">✗</span></td>
                             </tr>
                             <tr>
-                                <td><strong>Find Duplicates & Price Hikes</strong></td>
+                                <td><strong>Price Hike & Duplicate Alerts</strong></td>
                                 <td class="highlight-col"><span class="check">✓</span></td>
-                                <td><span class="check">✓</span></td>
-                                <td><span class="cross">✗</span></td>
+                                <td><span class="check">✓</span><br><small>(Via bank data)</small></td>
+                                <td><span class="partial">Partial</span></td>
                                 <td><span class="cross">✗</span></td>
                             </tr>
                         </tbody>
